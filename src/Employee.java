@@ -1,75 +1,49 @@
 import java.util.Objects;
 
 public class Employee {
-    private static String name;
-    private static String nameOne;
-    private static String nameTwo;
+    private final int id;
+    private final String fullName;
     private int departament;
-    private static int salary;
-    private static int id = 455600;
-    private static int generateID;
+    private int salary;
+    private static int generateID = 1;
 
-    public Employee() {
-        generateID = ++id;
-    }
-
-    public Employee(String name, String nameOne, String nameTwo, int departament, int salary) {
-        this.name = name;
-        this.nameOne = nameOne;
-        this.nameTwo = nameTwo;
+    public Employee(String fullName, int departament, int salary) {
+        this.id = generateID++;
+        this.fullName = fullName;
         this.departament = departament;
         this.salary = salary;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getNameOne() {
-        return nameOne;
-    }
-
-    public String getNameTwo() {
-        return nameTwo;
+    public String getFullName() {
+        return fullName;
     }
 
     public int getDepartament() {
         return departament;
     }
 
-    public void setDepartament(int departament) {
-        this.departament = departament;
-    }
-
     public int getSalary() {
         return salary;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setDepartament(int departament) {
+        this.departament = departament;
     }
 
     public void setSalary(int salary) {
         this.salary = salary;
     }
 
-    public static int getGenerateID() {
-        return generateID;
-    }
-
-    public static int getId() {
-        return id;
-    }
-
     @Override
     public String toString() {
-        return "Сотрудник (id " + new Employee().getGenerateID() + "):" +
-                "имя '" + name + '\'' +
-                ", фамилия '" + nameOne + '\'' +
-                ", отчество '" + nameTwo + '\'' +
-                ", отдел " + "'" + departament + '\'' +
-                ", зарплата " + salary + " руб." +
-                ';';
-    }
-
-    public static void reternName() {
-        System.out.println(name + " " + nameOne + " " + nameTwo);
+        return "id=" + id +
+                ", ФИО='" + fullName + '\'' +
+                ", отдел=" + departament +
+                ", зарплата=" + salary;
     }
 
     @Override
@@ -77,11 +51,11 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return departament == employee.departament && salary == employee.salary && Objects.equals(name, employee.name) && Objects.equals(nameOne, employee.nameOne) && Objects.equals(nameTwo, employee.nameTwo);
+        return departament == employee.departament && salary == employee.salary && Objects.equals(fullName, employee.fullName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, nameOne, nameTwo, departament, salary);
+        return Objects.hash(fullName, departament, salary);
     }
 }

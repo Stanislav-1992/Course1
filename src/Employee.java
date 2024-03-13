@@ -40,10 +40,10 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "id=" + id +
-                ", ФИО='" + fullName + '\'' +
-                ", отдел=" + departament +
-                ", зарплата=" + salary;
+        return "id - " + id +
+                ", ФИО - " + fullName +
+                ", отдел - " + departament +
+                ", зарплата - " + salary + " руб.";
     }
 
     @Override
